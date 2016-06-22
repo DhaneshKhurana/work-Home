@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+	<student id="1">
+		<name>                                      Shiv Kumar </name>
+		<rollNo> 01 </rollNo>
+		<class> 2 </class>
+	</student>
+	<student id="2">
+		<name>Deepak Sanwan </name>
+		<rollNo>02 </rollNo>
+		<class>2 </class>
+	</student>
+	<student id="3">
+		<name> Govind Kumar</name>
+		<rollNo> 03</rollNo>
+		<class> 2</class>
+	</student>
+	<student id="4">
+		<name>Narayan Kumar</name>
+		<rollNo>04</rollNo>
+		<class>1</class>
+	</student>
+	<student id="5">
+		<name>Abbas Ali</name>
+		<rollNo>05</rollNo>
+		<class>1</class>
+	</student>
+</students>

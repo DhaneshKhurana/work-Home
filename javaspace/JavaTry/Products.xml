@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<store>
+	<prodcut id="1" batch="A">
+		<mfg>
+			<day>10</day>
+			<month>01</month>
+			<year>2010</year>
+		</mfg>
+		<exp>10</exp>
+		<color>red</color>
+		<company>agmark</company>
+	</prodcut>
+	<prodcut id="5" batch="D">
+		<mfg>
+			<day>10</day>
+			<month>09</month>
+			<year>2010</year>
+		</mfg>
+		<exp>50</exp>
+		<color>pink</color>
+		<company>agmark</company>
+	</prodcut>
+	<prodcut id="4" batch="C">
+		<mfg>
+			<day>10</day>
+			<month>04</month>
+			<year>2011</year>
+		</mfg>
+		<exp>19</exp>
+		<color>white</color>
+		<company>agmark</company>
+	</prodcut>
+	<prodcut id="3" batch="B">
+		<mfg>
+			<day>14</day>
+			<month>04</month>
+			<year>2110</year>
+		</mfg>
+		<exp>15</exp>
+		<color>red</color>
+		<company>surya</company>
+	</prodcut>
+	<prodcut id="2" batch="A">
+		<mfg>
+			<day>12</day>
+			<month>02</month>
+			<year>2011</year>
+		</mfg>
+		<exp>11</exp>
+		<color>blue</color>
+		<company>agmark</company>
+	</prodcut>
+</store>
