@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> -->
+
+<!-- <beans default-init-method="myInit" default-destroy-method="myDestroy"> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+    <context:annotation-config/>
+	
+	<bean id="parentTriangle" name="parentTriangleName" class="org.dhanesh.shapes.Triangle" abstract="true">
+		<property name="height" value="5"/>
+		<property name="pointA">
+			<ref bean="p3"/>
+		</property>
+		<property name="pointC" >
+			<ref bean="zeroPoint"/>
+		</property>
+		<property name="pointX">
+			<ref bean="pointX"/>
+		</property>
+		<property name="pointY">
+			<ref bean="pointY"/>
+		</property>
+		<property name="points">
+			<list>
+				<ref bean="zeroPoint"/>
+				<ref bean="point3"/>
+			</list>
+		</property>	
+	
+	</bean>
+
+	<bean id="triangle2" class="org.dhanesh.shapes.Triangle" name="triangle2Name" parent="parentTriangle" init-method="myInit" >
+		<property name="base" value="3"/>
+		<property name="hypotenus" value="1"/>
+		<property name="pointB" ref="p3" ></property>
+		<property name="pointC" >
+			<ref bean="zeroPoint"/>
+		</property>
+		<property name="points">
+			<list merge="true">
+				<ref bean="pointX"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="triangle" class="org.dhanesh.shapes.Triangle" autowire="byName">
+		<!-- <property name="sideThree" value="30"/> -->
+		<property name="height" value="5"/>
+		<property name="base" value="3"/>
+		<property name="hypotenus" value="1"/>
+		<property name="pointA">
+			<bean class="org.dhanesh.shapes.basic.Point">
+				<property name="x" value="19"/>
+				<property name="y" value="${molu}"/>
+				<property name="z" value="${tolu}"/>
+			</bean>
+		</property>
+		<property name="pointB" ref="p3" ></property>
+		<property name="pointC" >
+			<ref bean="zeroPoint"/>
+		</property>
+		<property name="points">
+			<list>
+				<ref bean="zeroPoint"/>
+				<ref bean="point3"/>
+			</list>
+		</property>
+		
+		<constructor-arg index="0" type="int" value="30"/>
+		<constructor-arg index="1" type="int" value="20"/>
+		<constructor-arg index="2" type="int" value="10"/>
+		<constructor-arg index="3" type="java.lang.String" value="Scalen"/>
+	</bean>
+	
+	<!-- <bean id="circle" class="org.dhanesh.shapes.Circle">
+		<property name="center">
+			<ref bean="zeroPoint"/>
+		</property>
+		<property name="radius" value="10"></property>
+	</bean> -->
+	
+	<bean id="circle" class="org.dhanesh.shapes.Circle">
+		<property name="radius" value="10"></property>
+	</bean>
+	
+	<!-- <bean id="center" class="org.dhanesh.shapes.basic.Point">
+		<property name="x" value="${golu}"/>
+		<property name="y" value="0"/>
+		<property name="z" value="0"/>
+	</bean> -->
+	
+	<bean id="zeroPoint" class="org.dhanesh.shapes.basic.Point">
+		<qualifier value="circleCenter"/>
+		<property name="x" value="${golu}"/>
+		<property name="y" value="0"/>
+		<property name="z" value="0"/>
+	</bean>
+	
+	
+	
+	<bean id="point3" name="point3Name" class="org.dhanesh.shapes.basic.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="20"/>
+		<property name="z" value="20"/>
+	</bean>
+	
+	<bean id="pointX" class="org.dhanesh.shapes.basic.Point">
+		<property name="x" value="30"/>
+		<property name="y" value="30"/>
+		<property name="z" value="30"/>
+	</bean>
+	
+	<bean id="pointY" class="org.dhanesh.shapes.basic.Point">
+		<property name="x" value="40"/>
+		<property name="y" value="40"/>
+		<property name="z" value="40"/>
+	</bean>
+	
+	<alias name="point3" alias="p3"/>
+	
+	<bean class="org.dhanesh.main.BeanPostProcessorImpl"/>
+	
+	<bean class="org.dhanesh.main.BeanFactoryPostProcessorImpl"/>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:resources/points.properties"></property>
+	</bean>
+	
+	<context:component-scan base-package="org.dhanesh.main"></context:component-scan>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>resources/messages</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+	
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+	
+</beans>

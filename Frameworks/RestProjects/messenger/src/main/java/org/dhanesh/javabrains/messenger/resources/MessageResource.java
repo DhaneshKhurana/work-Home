@@ -23,14 +23,13 @@ import org.dhanesh.javabrains.messenger.service.MessageService;
 
 @Path("/messages")
 @Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+@Produces(value = {MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
 public class MessageResource {
 
 	private MessageService messageService = new MessageService();
 	
 	
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
 	public List<Message> getXMLMessages(@BeanParam QueryBeans bean){
 		System.out.println("XML method called");
 		//System.out.println(year + " :: "  + start + " :: " + offset);
@@ -46,7 +45,7 @@ public class MessageResource {
 		return messageService.getAllMessages();
 	}
 	
-	@GET
+/*	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Message> getJSONMessages(@BeanParam QueryBeans bean){
 		System.out.println("JSON method called");
@@ -61,7 +60,7 @@ public class MessageResource {
 		}
 			
 		return messageService.getAllMessages();
-	}
+	}*/
 	
 	@POST
 	public Response addMessage(Message msg , @Context UriInfo uriInfo){
